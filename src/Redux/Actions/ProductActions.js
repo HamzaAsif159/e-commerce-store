@@ -13,3 +13,8 @@ export function SelectedProducts(product) {
     payload: product,
   }
 }
+export function removeProduct() {
+  return {
+    type: ActionTypes.REMOVE_PRODUCT,
+  }
+}
