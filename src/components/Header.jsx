@@ -3,10 +3,17 @@ import { Link } from "react-router-dom"
 
 export default function Header() {
   return (
-    <nav className="bg-cyan-700 h-16 flex items-center">
-      <h2 className="ml-4 text-white text-2xl font-bold cursor-pointer">
+    <nav className="bg-cyan-700 h-16 flex items-center justify-between px-8">
+      <h2 className=" text-white text-2xl font-bold cursor-pointer uppercase">
         <Link to="/">MyStore</Link>
       </h2>
+      <Link to={"/cart"}>
+        <img
+          src="./cart.svg"
+          alt="cart-icon"
+          className="h-8 text-white cursor-pointer"
+        />
+      </Link>
     </nav>
   )
 }

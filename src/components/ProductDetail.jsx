@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from "react-redux"
 /* Local imports */
 import {
   SelectedProducts,
-  removeProduct,
+  RemoveProduct,
+  AddToCart,
 } from "../Redux/Actions/ProductActions"
 
 export default function ProductDetail() {
@@ -27,7 +28,7 @@ export default function ProductDetail() {
   useEffect(() => {
     if (productId && productId !== "") FetchProductDetails()
     return () => {
-      dispatch(removeProduct())
+      dispatch(RemoveProduct())
     }
   }, [productId])
 
@@ -48,10 +49,17 @@ export default function ProductDetail() {
                 {title}
               </h1>
               <p class="leading-relaxed">{description}</p>
-              <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
-              <span class="title-font font-medium text-2xl text-gray-900">
-                Price: ${price}
-              </span>
+              <div class="flex mt-6 items-center justify-between pb-5 border-b-2 border-gray-100 mb-5">
+                <span class="title-font font-medium text-2xl text-gray-900">
+                  Price: ${price}
+                </span>
+                <button
+                  onClick={() => dispatch(AddToCart(product))}
+                  class="px-4 text-sm py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none"
+                >
+                  Add to cart
+                </button>
+              </div>
             </div>
           </div>
         </div>

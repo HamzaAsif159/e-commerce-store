@@ -22,3 +22,16 @@ export function SelectedProductReducer(state = {}, { type, payload }) {
       return state
   }
 }
+
+const initialCartState = {
+  cartItems: [],
+}
+
+export function CartItemReducer(state = initialCartState, action) {
+  switch (action.type) {
+    case ActionTypes.ADD_TO_CART:
+      return { ...state, cartItems: [...state.cartItems, action.payload] }
+    default:
+      return state
+  }
+}
