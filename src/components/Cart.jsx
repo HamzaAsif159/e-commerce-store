@@ -1,11 +1,15 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { RemoveFromCart } from "../Redux/Actions/ProductActions"
+import calculateSum from "../../utils/Calculate"
 
 export default function Cart() {
   const cartData = useSelector((state) => state.allcartItems.cartItems)
+  const dispatch = useDispatch()
 
   const cartProducts = cartData.map((product) => {
-    const { id, title, description, price, image, category } = product
+    const { id, title, price, image, category } = product
     return (
       <div class="mt-20">
         <ul class="space-y-4">
@@ -23,13 +27,15 @@ export default function Cart() {
                 </div>
                 <div>
                   <dt class="inline font-bold">Price:</dt>
-                  <dd class="inline font-bold"> $34</dd>
+                  <dd class="inline font-bold"> ${price}</dd>
                 </div>
               </dl>
             </div>
             <div class="flex items-center justify-end flex-1 gap-2">
-              <button class="text-gray-600 transition hover:text-red-600">
-                <span class="sr-only">Remove item</span>
+              <button
+                onClick={() => dispatch(RemoveFromCart(product))}
+                class="text-gray-600 transition hover:text-red-600"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -51,7 +57,6 @@ export default function Cart() {
       </div>
     )
   })
-  console.log(cartData)
   return (
     <section>
       <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
@@ -62,24 +67,34 @@ export default function Cart() {
             </h1>
           </header>
           {cartProducts}
-          <div class="flex justify-end pt-8 mt-8 border-t border-gray-100">
-            <div class="w-screen max-w-lg space-y-4">
-              <dl class="space-y-0.5 text-sm text-gray-700">
-                <div class="flex justify-between !text-base font-medium">
-                  <dt>Total</dt>
-                  <dd>£200</dd>
+          {cartData.length > 0 ? (
+            <div class="flex justify-end pt-8 mt-8 border-t border-gray-100">
+              <div class="w-screen max-w-lg space-y-4">
+                <dl class="space-y-0.5 text-sm text-gray-700">
+                  <div class="flex justify-between !text-lg font-medium mt-5">
+                    <dt>Total</dt>
+                    <dd>${calculateSum(cartData)}</dd>
+                  </div>
+                </dl>
+                <div class="flex justify-end">
+                  <a
+                    href="#"
+                    class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600"
+                  >
+                    Checkout
+                  </a>
                 </div>
-              </dl>
-              <div class="flex justify-end">
-                <a
-                  href="#"
-                  class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600"
-                >
-                  Checkout
-                </a>
               </div>
             </div>
-          </div>
+          ) : (
+            <h1 className="text-2xl font-bold flex items-center justify-center h-48">
+              It's look like your cart is empty! Shop from {"  "}{" "}
+              <Link to="/" className="ml-2  underline decoration-double">
+                {" "}
+                here
+              </Link>
+            </h1>
+          )}
         </div>
       </div>
     </section>

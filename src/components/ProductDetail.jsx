@@ -13,10 +13,12 @@ export default function ProductDetail() {
   const { productId } = useParams()
   const dispatch = useDispatch()
   const product = useSelector((state) => state.product)
+  const cartProduct = useSelector((state) => state.allcartItems.cartItems)
 
   const { image, title, description, price } = useSelector(
     (state) => state.product
   )
+
   async function FetchProductDetails() {
     const response = await axios
       .get(`https://fakestoreapi.com/products/${productId}`)
@@ -53,12 +55,19 @@ export default function ProductDetail() {
                 <span class="title-font font-medium text-2xl text-gray-900">
                   Price: ${price}
                 </span>
-                <button
-                  onClick={() => dispatch(AddToCart(product))}
-                  class="px-4 text-sm py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none"
-                >
-                  Add to cart
-                </button>
+                {cartProduct.filter((items) => items.id === product.id)
+                  .length ? (
+                  <button className="px-4 text-lg py-2 transition ease-in bg-gray-800 text-white border-gray-900 rounded-full">
+                    Added
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => dispatch(AddToCart(product))}
+                    class="px-4 text-sm py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none"
+                  >
+                    Add to cart
+                  </button>
+                )}
               </div>
             </div>
           </div>

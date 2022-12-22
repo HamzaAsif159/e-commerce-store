@@ -31,6 +31,13 @@ export function CartItemReducer(state = initialCartState, action) {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART:
       return { ...state, cartItems: [...state.cartItems, action.payload] }
+    case ActionTypes.REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems.filter((items) => items.id !== action.payload.id),
+        ],
+      }
     default:
       return state
   }

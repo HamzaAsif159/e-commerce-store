@@ -25,3 +25,10 @@ export function AddToCart(product) {
     payload: product,
   }
 }
+
+export function RemoveFromCart(product) {
+  return {
+    type: ActionTypes.REMOVE_CART_ITEM,
+    payload: product,
+  }
+}
