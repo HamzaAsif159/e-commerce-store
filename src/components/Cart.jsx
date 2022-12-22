@@ -1,7 +1,8 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { RemoveFromCart } from "../Redux/Actions/ProductActions"
+/* local imports */
+import { RemoveFromCart, EmptyCart } from "../Redux/Actions/ProductActions"
 import calculateSum from "../../utils/Calculate"
 
 export default function Cart() {
@@ -40,7 +41,7 @@ export default function Cart() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   class="w-10 h-10"
                 >
@@ -59,27 +60,27 @@ export default function Cart() {
   })
   return (
     <section>
-      <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
-        <div class="max-w-3xl mx-auto">
-          <header class="text-center">
-            <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">
+      <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <header className="text-center">
+            <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">
               Your Cart
             </h1>
           </header>
           {cartProducts}
           {cartData.length > 0 ? (
-            <div class="flex justify-end pt-8 mt-8 border-t border-gray-100">
-              <div class="w-screen max-w-lg space-y-4">
-                <dl class="space-y-0.5 text-sm text-gray-700">
-                  <div class="flex justify-between !text-lg font-medium mt-5">
+            <div className="flex justify-end pt-8 mt-8 border-t border-gray-100">
+              <div className="w-screen max-w-lg space-y-4">
+                <dl className="space-y-0.5 text-sm text-gray-700">
+                  <div className="flex justify-between !text-lg font-medium mt-5">
                     <dt>Total</dt>
                     <dd>${calculateSum(cartData)}</dd>
                   </div>
                 </dl>
-                <div class="flex justify-end">
+                <div className="flex justify-end">
                   <a
-                    href="#"
-                    class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600"
+                    onClick={() => dispatch(EmptyCart())}
+                    class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
                   >
                     Checkout
                   </a>

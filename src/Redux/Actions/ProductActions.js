@@ -32,3 +32,9 @@ export function RemoveFromCart(product) {
     payload: product,
   }
 }
+
+export function EmptyCart() {
+  return {
+    type: ActionTypes.EMPTY_CART,
+  }
+}

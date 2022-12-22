@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-
+/* Local imports */
 import Header from "./components/Header"
 import ProductDetail from "./components/ProductDetail"
 import ProductListing from "./components/ProductListing"

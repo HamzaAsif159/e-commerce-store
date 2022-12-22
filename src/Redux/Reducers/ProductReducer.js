@@ -38,6 +38,8 @@ export function CartItemReducer(state = initialCartState, action) {
           ...state.cartItems.filter((items) => items.id !== action.payload.id),
         ],
       }
+    case ActionTypes.EMPTY_CART:
+      return { cartItems: [] }
     default:
       return state
   }
