@@ -1,13 +1,25 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 /* local imports */
 import { RemoveFromCart, EmptyCart } from "../Redux/Actions/ProductActions"
 import calculateSum from "../../utils/Calculate"
+import Modal from "./Modal"
 
 export default function Cart() {
+  const [isShown, SetIsShown] = useState(false)
   const cartData = useSelector((state) => state.allcartItems.cartItems)
   const dispatch = useDispatch()
+
+  function ShowModal() {
+    SetIsShown(true)
+    dispatch(EmptyCart())
+  }
+
+  function handleClick() {
+    SetIsShown(false)
+  }
 
   const cartProducts = cartData.map((product) => {
     const { id, title, price, image, category } = product
@@ -79,7 +91,7 @@ export default function Cart() {
                 </dl>
                 <div className="flex justify-end">
                   <a
-                    onClick={() => dispatch(EmptyCart())}
+                    onClick={() => ShowModal()}
                     class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
                   >
                     Checkout
@@ -88,16 +100,16 @@ export default function Cart() {
               </div>
             </div>
           ) : (
-            <h1 className="text-2xl font-bold flex items-center justify-center h-48">
-              It's look like your cart is empty! Shop from {"  "}{" "}
+            <h1 className="text-normal md:text-2xl font-bold md:flex items-center justify-center h-48">
+              It's look like your cart is empty! Shop from {"  "}
               <Link to="/" className="ml-2  underline decoration-double">
-                {" "}
                 here
               </Link>
             </h1>
           )}
         </div>
       </div>
+      {isShown && <Modal handleClick={handleClick} />}
     </section>
   )
 }
