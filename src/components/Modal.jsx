@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Modal(props) {
   return (
-    <div className="absolute inset-0 m-auto bg-blue-200 text-black h-3/6 w-6/12 p-10 rounded-lg">
+    <div className="absolute h-screen w-screen inset-0 m-auto bg-blue-200 text-black md:h-3/6 md:w-6/12 p-10 rounded-lg">
       <div className="flex flex-col items-center justify-center h-full">
         <h1 className="font-bold text-xl">
           Wohoo! Your order has been confirmed

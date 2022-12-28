@@ -100,7 +100,7 @@ export default function Cart() {
               </div>
             </div>
           ) : (
-            <h1 className="text-normal md:text-2xl font-bold md:flex items-center justify-center h-48">
+            <h1 className="text-normal flex flex-col md:text-2xl font-bold md:flex-row items-center justify-center h-48">
               It's look like your cart is empty! Shop from {"  "}
               <Link to="/" className="ml-2  underline decoration-double">
                 here
