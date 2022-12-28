@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom"
 /* Local imports */
-import Header from "./components/Header"
-import ProductDetail from "./components/ProductDetail"
-import ProductListing from "./components/ProductListing"
-import Cart from "./components/Cart"
+import Header from "./Components/Header"
+import ProductDetail from "./Components/ProductDetail"
+import ProductListing from "./Components/ProductListing"
+import Cart from "./Components/Cart"
+import NotFound from "./Components/NotFound"
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route eaxct path="/" element={<ProductListing />} />
         <Route exact path="/product/:productId" element={<ProductDetail />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route>404 not found</Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

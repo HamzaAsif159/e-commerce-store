@@ -29,9 +29,9 @@ export default function ProductListing() {
         class="w-64 p-2 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md"
         key={id}
       >
-        <img class="rounded-t-lg" src={image} className="h-48 item" />
         <div class="p-5">
           <Link to={`/product/${id}`}>
+            <img class="rounded-t-lg" src={image} className="h-48 item" />
             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
               {title}
             </h5>
