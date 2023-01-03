@@ -9,13 +9,12 @@ import Textarea from "./Textarea"
 export default function Checkout(props) {
   const navigate = useNavigate()
   const notify = () => {
-    toast.success("Your order is on way!")
+    toast.success("Your order is on way!", { duration: 4000 })
     navigate("/")
   }
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -28,7 +27,7 @@ export default function Checkout(props) {
   return (
     <div>
       <div className="flex flex-col items-center mt-8">
-        <h1 className="text-2xl font-bold uppercase mb-4">
+        <h1 className="text-xl align-center md:text-2xl font-bold uppercase mb-4">
           Add your details for order
         </h1>
         <form onSubmit={handleSubmit(notify)}>
