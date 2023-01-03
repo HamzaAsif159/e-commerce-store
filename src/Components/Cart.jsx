@@ -5,7 +5,7 @@ import { useState } from "react"
 /* local imports */
 import { RemoveFromCart, EmptyCart } from "../Redux/Actions/ProductActions"
 import calculateSum from "../../utils/Calculate"
-import Modal from "./Modal"
+import Checkout from "./Checkout"
 
 export default function Cart() {
   const [isShown, SetIsShown] = useState(false)
@@ -13,6 +13,7 @@ export default function Cart() {
   const dispatch = useDispatch()
 
   function ShowModal() {
+    console.log("clicked")
     SetIsShown(true)
     dispatch(EmptyCart())
   }
@@ -90,12 +91,14 @@ export default function Cart() {
                   </div>
                 </dl>
                 <div className="flex justify-end">
-                  <a
-                    onClick={() => ShowModal()}
-                    class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
-                  >
-                    Checkout
-                  </a>
+                  <Link to={"/checkout"}>
+                    <a
+                      onClick={() => ShowModal()}
+                      class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
+                    >
+                      Checkout
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -109,7 +112,7 @@ export default function Cart() {
           )}
         </div>
       </div>
-      {isShown && <Modal handleClick={handleClick} />}
+      {isShown && <Link to={"/checkout"} />}
     </section>
   )
 }
