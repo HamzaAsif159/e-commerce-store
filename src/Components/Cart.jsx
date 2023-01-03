@@ -1,54 +1,41 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { useState } from "react"
 /* local imports */
 import { RemoveFromCart, EmptyCart } from "../Redux/Actions/ProductActions"
 import calculateSum from "../../utils/Calculate"
-import Checkout from "./Checkout"
 
 export default function Cart() {
-  const [isShown, SetIsShown] = useState(false)
   const cartData = useSelector((state) => state.allcartItems.cartItems)
   const dispatch = useDispatch()
-
-  function ShowModal() {
-    console.log("clicked")
-    SetIsShown(true)
-    dispatch(EmptyCart())
-  }
-
-  function handleClick() {
-    SetIsShown(false)
-  }
 
   const cartProducts = cartData.map((product) => {
     const { id, title, price, image, category } = product
     return (
-      <div class="mt-20">
-        <ul class="space-y-4">
-          <li class="flex items-center">
+      <div className="mt-20">
+        <ul className="space-y-4">
+          <li className="flex items-center">
             <div className=" w-40 h-40">
-              <img src={image} alt="" class="object-cover rounded" />
+              <img src={image} alt="" className="object-cover rounded" />
             </div>
 
-            <div class="ml-4">
-              <h3 class="text-xl font-semibold text-gray-900">{title}</h3>
-              <dl class="mt-0.5 space-y-px text-normal text-gray-600">
+            <div className="ml-4">
+              <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+              <dl className="mt-0.5 space-y-px text-normal text-gray-600">
                 <div>
-                  <dt class="inline">Category:</dt>
-                  <dd class="inline"> {category}</dd>
+                  <dt className="inline">Category:</dt>
+                  <dd className="inline"> {category}</dd>
                 </div>
                 <div>
-                  <dt class="inline font-bold">Price:</dt>
-                  <dd class="inline font-bold"> ${price}</dd>
+                  <dt className="inline font-bold">Price:</dt>
+                  <dd className="inline font-bold"> ${price}</dd>
                 </div>
               </dl>
             </div>
-            <div class="flex items-center justify-end flex-1 gap-2">
+            <div className="flex items-center justify-end flex-1 gap-2">
               <button
                 onClick={() => dispatch(RemoveFromCart(product))}
-                class="text-gray-600 transition hover:text-red-600"
+                className="text-gray-600 transition hover:text-red-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +43,7 @@ export default function Cart() {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  class="w-10 h-10"
+                  className="w-10 h-10"
                 >
                   <path
                     stroke-linecap="round"
@@ -93,7 +80,7 @@ export default function Cart() {
                 <div className="flex justify-end">
                   <Link to={"/checkout"}>
                     <a
-                      onClick={() => ShowModal()}
+                      onClick={() => dispatch(EmptyCart())}
                       class="block px-5 py-3 text-sm text-gray-100 transition bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
                     >
                       Checkout
@@ -112,7 +99,6 @@ export default function Cart() {
           )}
         </div>
       </div>
-      {isShown && <Link to={"/checkout"} />}
     </section>
   )
 }

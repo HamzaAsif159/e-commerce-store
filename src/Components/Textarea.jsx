@@ -5,7 +5,7 @@ export default function Textarea() {
     <div>
       <label
         for="message"
-        class="block mb-2 font-bold text-gray-900 dark:text-white"
+        className="block mb-2 font-bold text-gray-900 dark:text-white"
       >
         Address
       </label>
