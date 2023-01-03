@@ -26,17 +26,17 @@ export default function ProductListing() {
     const { id, image, title, price, category } = product
     return (
       <div
-        class="w-64 p-2 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md"
+        className="w-64 p-2 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md"
         key={id}
       >
-        <div class="p-5">
+        <div className="p-5">
           <Link to={`/product/${id}`}>
-            <img class="rounded-t-lg" src={image} className="h-48 item" />
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
+            <img className="rounded-t-lg h-48 item" src={image} />
+            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
               {title}
             </h5>
-            <p class="mb-3 font-semibold text-gray-700 ">Price: ${price}</p>
-            <p class="mb-3 font-normal text-gray-700 ">{category}</p>
+            <p className="mb-3 font-semibold text-gray-700 ">Price: ${price}</p>
+            <p className="mb-3 font-normal text-gray-700 ">{category}</p>
           </Link>
         </div>
       </div>

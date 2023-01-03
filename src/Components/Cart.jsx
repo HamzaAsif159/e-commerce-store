@@ -15,7 +15,7 @@ export default function Cart() {
       <div className="mt-20">
         <ul className="space-y-4">
           <li className="flex items-center">
-            <div className=" w-40 h-40">
+            <div className="w-40 h-40 ">
               <img src={image} alt="" className="object-cover rounded" />
             </div>
 
@@ -90,9 +90,9 @@ export default function Cart() {
               </div>
             </div>
           ) : (
-            <h1 className="text-normal flex flex-col md:text-2xl font-bold md:flex-row items-center justify-center h-48">
+            <h1 className="flex flex-col items-center justify-center h-48 font-bold text-normal md:text-2xl md:flex-row">
               It's look like your cart is empty! Shop from {"  "}
-              <Link to="/" className="ml-2  underline decoration-double">
+              <Link to="/" className="ml-2 underline decoration-double">
                 here
               </Link>
             </h1>

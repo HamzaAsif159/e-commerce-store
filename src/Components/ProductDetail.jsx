@@ -35,35 +35,35 @@ export default function ProductDetail() {
   }, [productId])
 
   return (
-    <section class="text-gray-600 body-font overflow-hidden">
+    <section className="overflow-hidden text-gray-600 body-font">
       {Object.keys(product).length === 0 ? (
-        <h1 className="text-3xl text-center font-bold">...Loading</h1>
+        <h1 className="text-3xl font-bold text-center">...Loading</h1>
       ) : (
-        <div class="container px-5 py-10 mx-auto">
-          <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div className="container px-5 py-10 mx-auto">
+          <div className="flex flex-wrap mx-auto lg:w-4/5">
             <img
               alt="ecommerce"
-              class="lg:w-1/2 w-full lg:h-auto max-h-min object-cover object-center rounded"
+              className="object-cover object-center w-full rounded lg:w-1/2 lg:h-auto max-h-min"
               src={image}
             />
-            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+            <div className="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
+              <h1 className="mb-1 text-3xl font-medium text-gray-900 title-font">
                 {title}
               </h1>
-              <p class="leading-relaxed">{description}</p>
-              <div class="flex mt-6 items-center justify-between pb-5 border-b-2 border-gray-100 mb-5">
-                <span class="title-font font-medium text-2xl text-gray-900">
+              <p className="leading-relaxed">{description}</p>
+              <div className="flex items-center justify-between pb-5 mt-6 mb-5 border-b-2 border-gray-100">
+                <span className="text-2xl font-medium text-gray-900 title-font">
                   Price: ${price}
                 </span>
                 {cartProduct.filter((items) => items.id === product.id)
                   .length ? (
-                  <button className="px-4 text-lg py-2 transition ease-in bg-gray-800 text-white border-gray-900 rounded-full">
+                  <button className="px-4 py-2 text-lg text-white transition ease-in bg-gray-800 border-gray-900 rounded-full">
                     Added
                   </button>
                 ) : (
                   <button
                     onClick={() => dispatch(AddToCart(product))}
-                    class="px-4 text-sm py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none"
+                    className="px-4 py-2 text-sm uppercase transition duration-200 ease-in border-2 border-gray-900 rounded-full hover:bg-gray-800 hover:text-white focus:outline-none"
                   >
                     Add to cart
                   </button>

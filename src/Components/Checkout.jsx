@@ -27,12 +27,12 @@ export default function Checkout(props) {
   return (
     <div>
       <div className="flex flex-col items-center mt-8">
-        <h1 className="text-xl align-center md:text-2xl font-bold uppercase mb-4">
+        <h1 className="mb-4 text-xl font-bold uppercase align-center md:text-2xl">
           Add your details for order
         </h1>
         <form onSubmit={handleSubmit(notify)}>
           <div className="my-2">
-            <label for="first-name" className=" inline-block mb-1 font-bold">
+            <label for="first-name" className="inline-block mb-1 font-bold ">
               First Name
             </label>
             <input
@@ -48,13 +48,13 @@ export default function Checkout(props) {
               required
             />
             {errors.FirstName && (
-              <p className="mt-2 text-red-800 text-sm">
+              <p className="mt-2 text-sm text-red-800">
                 Must be alphabet & less than 12
               </p>
             )}
           </div>
           <div className="my-2">
-            <label for="last-name" className=" inline-block mb-1 font-bold">
+            <label for="last-name" className="inline-block mb-1 font-bold ">
               Last Name
             </label>
             <input
@@ -69,13 +69,13 @@ export default function Checkout(props) {
               required
             />
             {errors.LastName && (
-              <p className="mt-2 text-red-800 text-sm">
+              <p className="mt-2 text-sm text-red-800">
                 Must be alphabet & less than 12
               </p>
             )}
           </div>
           <div className="my-2">
-            <label for="email" className=" inline-block mb-1 font-bold">
+            <label for="email" className="inline-block mb-1 font-bold ">
               Email
             </label>
             <input
@@ -90,7 +90,7 @@ export default function Checkout(props) {
               required
             />
             {errors.Email && (
-              <p className="mt-2 text-red-800 text-sm">Invalid email address</p>
+              <p className="mt-2 text-sm text-red-800">Invalid email address</p>
             )}
           </div>
           <Textarea />
